@@ -2,6 +2,7 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext.jsx';
 import { usePosts } from '../../hooks/usePosts';
+import { getPlaceholderUrl } from '../../utils/placeholder';
 import CreatePost from '../Post/CreatePost.jsx';
 import PostCard from '../Post/PostCard.jsx';
 import { Filter, TrendingUp, Clock, Flame } from 'lucide-react';
@@ -28,7 +29,7 @@ const Feed = () => {
         userId: post.user_id,
         username: post.profiles?.username || 'User',
         displayName: post.profiles?.display_name || 'User',
-        avatar: post.profiles?.avatar_url || '/api/placeholder/40/40',
+        avatar: post.profiles?.avatar_url || getPlaceholderUrl(40, 40),
         community: post.communities?.name || 'General',
         mood: post.mood || 'neutral',
         type: post.type,

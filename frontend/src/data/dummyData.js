@@ -1,4 +1,5 @@
 // ConnectHub - Dummy Data for Development
+import { getPlaceholderUrl } from '../utils/placeholder';
 
 export const users = [
   {
@@ -172,7 +173,7 @@ export const posts = [
     userId: 0, // Anonymous
     username: "anonymous",
     displayName: "", // Empty for anonymous posts
-    avatar: "/api/placeholder/40/40",
+    avatar: getPlaceholderUrl(40, 40),
     community: "WellnessWarriors",
     timestamp: new Date(Date.now() - 6 * 60 * 60 * 1000), // 6 hours ago
     mood: "thoughtful",

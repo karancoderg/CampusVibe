@@ -142,7 +142,7 @@ const PostCard = ({ post, onPostDeleted }) => {
           timestamp: new Date(comment.created_at + 'Z'), // Handle UTC properly
           username: comment.profiles?.username || 'User',
           displayName: comment.profiles?.display_name || 'User',
-          avatar: comment.profiles?.avatar_url || '/api/placeholder/32/32'
+          avatar: comment.profiles?.avatar_url || getPlaceholderUrl(32, 32)
         }));
         setComments(formattedComments);
         setCommentCount(data.length); // Set count to actual number of comments from DB
@@ -194,7 +194,7 @@ const PostCard = ({ post, onPostDeleted }) => {
           timestamp: new Date().toISOString(), // Use current time as ISO string
           username: profile?.username || 'You',
           displayName: profile?.display_name || 'You',
-          avatar: profile?.avatar_url || '/api/placeholder/32/32',
+          avatar: profile?.avatar_url || getPlaceholderUrl(32, 32),
           user_id: currentUserId,
           post_id: post.id
         };

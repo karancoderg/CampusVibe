@@ -82,7 +82,7 @@ const Communities = () => {
           userId: post.user_id,
           username: post.is_anonymous ? 'anonymous' : post.profiles?.username || 'User',
           displayName: post.is_anonymous ? 'Anonymous' : post.profiles?.display_name || 'User',
-          avatar: post.is_anonymous ? '/api/placeholder/40/40' : post.profiles?.avatar_url || '/api/placeholder/40/40',
+          avatar: post.is_anonymous ? getPlaceholderUrl(40, 40) : post.profiles?.avatar_url || getPlaceholderUrl(40, 40),
           community: community.name,
           mood: post.mood || 'neutral',
           type: post.type,

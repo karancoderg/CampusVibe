@@ -201,7 +201,7 @@ const Community = () => {
           userId: msg.user_id,
           username: msg.profiles?.username || 'User',
           displayName: msg.profiles?.display_name || 'User',
-          avatar: msg.profiles?.avatar_url || '/api/placeholder/32/32'
+          avatar: msg.profiles?.avatar_url || getPlaceholderUrl(32, 32)
         }));
         setMessages(formattedMessages);
       } else {

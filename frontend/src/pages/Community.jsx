@@ -245,7 +245,7 @@ const Community = () => {
         return;
       }
 
-      const response = await fetch(`http://localhost:3000/api/chat/community/${currentCommunity.id}/messages`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000/api'}/chat/community/${currentCommunity.id}/messages`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -275,7 +275,7 @@ const Community = () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) return;
 
-      const response = await fetch(`http://localhost:3000/api/community/${currentCommunity.id}/members`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000/api'}/community/${currentCommunity.id}/members`, {
         headers: {
           'Authorization': `Bearer ${session.access_token}`
         }
@@ -299,7 +299,7 @@ const Community = () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) return;
 
-      const response = await fetch(`http://localhost:3000/api/community/${currentCommunity.id}/remove/${userId}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000/api'}/community/${currentCommunity.id}/remove/${userId}`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${session.access_token}`
@@ -345,7 +345,7 @@ const Community = () => {
       const formData = new FormData();
       formData.append('file', file);
 
-      const response = await fetch(`http://localhost:3000/api/chat/community/${currentCommunity.id}/upload`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000/api'}/chat/community/${currentCommunity.id}/upload`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${session.access_token}`

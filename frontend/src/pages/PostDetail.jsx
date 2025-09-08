@@ -32,7 +32,7 @@ const PostDetail = () => {
       console.log('Post not found locally, fetching from API...');
       // If not found locally, fetch from API
       try {
-        const response = await fetch(`http://localhost:3000/api/posts/${postId}`);
+        const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000/api'}/posts/${postId}`);
         console.log('API response status:', response.status);
         
         if (response.ok) {

@@ -268,7 +268,7 @@ const PostCard = ({ post, onPostDeleted }) => {
     const checkLikeStatus = async () => {
       try {
         const userId = 'anonymous'; // Use same user ID as in like requests
-        const response = await fetch(`http://localhost:3000/api/posts/${post.id}/liked/${userId}`);
+        const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000/api'}/posts/${post.id}/liked/${userId}`);
         if (response.ok) {
           const result = await response.json();
           setIsLiked(result.liked);
@@ -292,7 +292,7 @@ const PostCard = ({ post, onPostDeleted }) => {
     setLikeCount(prev => wasLiked ? prev - 1 : prev + 1);
     
     try {
-      const response = await fetch(`http://localhost:3000/api/posts/${post.id}/like`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000/api'}/posts/${post.id}/like`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -490,7 +490,7 @@ const PostCard = ({ post, onPostDeleted }) => {
                   onClick={async () => {
                     if (window.confirm('Are you sure you want to delete this post?')) {
                       try {
-                        const response = await fetch(`http://localhost:3000/api/posts/${post.id}`, {
+                        const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000/api'}/posts/${post.id}`, {
                           method: 'DELETE'
                         });
                         

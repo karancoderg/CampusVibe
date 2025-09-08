@@ -717,7 +717,7 @@ export const AppProvider = ({ children }) => {
   // Load communities from API
   const loadCommunities = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/community/');
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000/api'}/community/`);
       if (response.ok) {
         const result = await response.json();
         dispatch({ type: 'LOAD_COMMUNITIES', payload: result.data });
@@ -794,7 +794,7 @@ export const AppProvider = ({ children }) => {
           return;
         }
 
-        const response = await fetch('http://localhost:3000/api/community/create', {
+        const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000/api'}/community/create`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

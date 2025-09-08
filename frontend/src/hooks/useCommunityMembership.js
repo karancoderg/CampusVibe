@@ -21,7 +21,7 @@ export const useCommunityMembership = (communityId) => {
         return;
       }
 
-      const response = await fetch(`http://localhost:3000/api/community/${communityId}/membership`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000/api'}/community/${communityId}/membership`, {
         headers: {
           'Authorization': `Bearer ${session.access_token}`
         }
@@ -58,7 +58,7 @@ export const useCommunityMembership = (communityId) => {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) throw new Error('Not authenticated');
 
-      const response = await fetch(`http://localhost:3000/api/community/${communityId}/join`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000/api'}/community/${communityId}/join`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${session.access_token}`
@@ -89,7 +89,7 @@ export const useCommunityMembership = (communityId) => {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) throw new Error('Not authenticated');
 
-      const response = await fetch(`http://localhost:3000/api/community/${communityId}/leave`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000/api'}/community/${communityId}/leave`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${session.access_token}`
@@ -126,7 +126,7 @@ export const useCommunityMembership = (communityId) => {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) throw new Error('Not authenticated');
 
-      const response = await fetch(`http://localhost:3000/api/community/${communityId}/kick/${userId}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000/api'}/community/${communityId}/kick/${userId}`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${session.access_token}`
@@ -150,7 +150,7 @@ export const useCommunityMembership = (communityId) => {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) throw new Error('Not authenticated');
 
-      const response = await fetch(`http://localhost:3000/api/community/${communityId}/transfer/${userId}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000/api'}/community/${communityId}/transfer/${userId}`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${session.access_token}`
@@ -179,7 +179,7 @@ export const useCommunityMembership = (communityId) => {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) throw new Error('Not authenticated');
 
-      const response = await fetch(`http://localhost:3000/api/community/${communityId}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000/api'}/community/${communityId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${session.access_token}`

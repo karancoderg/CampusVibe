@@ -21,7 +21,7 @@ export const useFriends = () => {
       }
 
       console.log('Session found, making API call...');
-      const response = await fetch('http://localhost:3000/api/friends/request', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000/api'}/friends/request`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ export const useFriends = () => {
         return { success: false, error: 'Not authenticated' };
       }
 
-      const response = await fetch('http://localhost:3000/api/friends/requests/incoming', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000/api'}/friends/requests/incoming`, {
         headers: {
           'Authorization': `Bearer ${session.access_token}`
         }
@@ -85,7 +85,7 @@ export const useFriends = () => {
         throw new Error('Not authenticated');
       }
 
-      const response = await fetch(`http://localhost:3000/api/friends/request/${requestId}/accept`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000/api'}/friends/request/${requestId}/accept`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${session.access_token}`
@@ -121,7 +121,7 @@ export const useFriends = () => {
         throw new Error('Not authenticated');
       }
 
-      const response = await fetch(`http://localhost:3000/api/friends/request/${requestId}/reject`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000/api'}/friends/request/${requestId}/reject`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${session.access_token}`
@@ -155,7 +155,7 @@ export const useFriends = () => {
         return { success: false, error: 'Not authenticated' };
       }
 
-      const response = await fetch('http://localhost:3000/api/friends/list', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000/api'}/friends/list`, {
         headers: {
           'Authorization': `Bearer ${session.access_token}`
         }
@@ -184,7 +184,7 @@ export const useFriends = () => {
         return { success: false, error: 'Not authenticated' };
       }
 
-      const response = await fetch(`http://localhost:3000/api/friends/status/${username}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000/api'}/friends/status/${username}`, {
         headers: {
           'Authorization': `Bearer ${session.access_token}`
         }

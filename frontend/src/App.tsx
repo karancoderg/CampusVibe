@@ -14,6 +14,7 @@ import Community from "./pages/Community";
 import Profile from "./pages/Profile";
 import SavedPosts from "./pages/SavedPosts";
 import Auth from "./pages/Auth";
+import AuthCallback from "./pages/AuthCallback";
 import NotFound from "./pages/NotFound";
 
 const AppContent = () => {
@@ -44,6 +45,7 @@ const AppContent = () => {
     >
       <Routes>
         <Route path="/" element={<Index />} />
+        <Route path="/auth/callback" element={<AuthCallback />} />
         <Route path="/post/:postId" element={<PostDetail />} />
         <Route path="/event/:eventId" element={<EventDetail />} />
         <Route path="/communities" element={<Communities />} />
